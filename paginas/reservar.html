@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserva - Hotel Ensueño</title>
+    <link rel="stylesheet" href="../css/reservar.css" />
+    <header>
+      <img
+        class="banner"
+        src="../imagenes/imagen1.jpg"
+        alt=""
+      />
+    </header>
+  </head>
+  <body>
+  
+    <div class="container">
+      <button class="reserve-btn" id="openModalBtn">Reservar Ahora</button>
+    </div>
+
+    <!-- Modal para la reserva -->
+    <div id="reserveModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <h2>Reserva tu habitación</h2>
+        <form id="reservationForm">
+          <div class="form-group">
+            <label for="name">Nombre Completo:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="room">Tipo de Habitación:</label>
+            <select id="room" name="room">
+              <option value="vip">Habitación VIP</option>
+              <option value="doble">Habitación Doble</option>
+              <option value="familiar">Habitación Familiar</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="checkin">Fecha de Check-in:</label>
+            <input type="date" id="checkin" name="checkin" required />
+          </div>
+          <div class="form-group">
+            <label for="checkout">Fecha de Check-out:</label>
+            <input type="date" id="checkout" name="checkout" required />
+          </div>
+          <button type="submit" class="submit-btn">Confirmar Reserva</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      // Obtener los elementos del DOM
+      const modal = document.getElementById("reserveModal");
+      const openModalBtn = document.getElementById("openModalBtn");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+      const reservationForm = document.getElementById("reservationForm");
+
+      // Abrir el modal al hacer clic en "Reservar"
+      openModalBtn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      // Cerrar el modal al hacer clic en la "X"
+      closeModalBtn.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // Cerrar el modal si el usuario hace clic fuera del contenido del modal
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      // Manejar el envío del formulario (simulación de confirmación)
+      reservationForm.onsubmit = function (event) {
+        event.preventDefault();
+        alert(
+          "Tu reserva ha sido confirmada. Se ha enviado un correo de confirmación a tu dirección."
+        );
+        modal.style.display = "none";
+      };
+    </script>
+  </body>
+  <footer>
+    <img
+    class="banner"
+    src="../imagenes/foter.jpeg"
+    alt=""
+  />
+  </footer>
+</html>
